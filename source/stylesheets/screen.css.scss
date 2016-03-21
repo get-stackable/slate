@@ -625,3 +625,16 @@ html, body {
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
+
+.logo {
+  text-align: center;
+  padding: 5px 0;
+  img {
+    width: 30px;
+    height: auto;
+  }
+  span {
+    color: #fff;
+    font-size: 30px;
+  }
+}
