@@ -628,14 +628,16 @@ html, body {
 
 .logo {
   text-align: center;
-  padding: 5px 0;
+  padding: 8px 0;
   border-bottom: 1px solid $nav-border;
+  background-color: $logo-bg;
   img {
     width: 30px;
     height: auto;
   }
   span {
-    color: $nav-text;
+    color: #fff;
     font-size: 30px;
+    font-weight: 600;
   }
 }
