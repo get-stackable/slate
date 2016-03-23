@@ -2,8 +2,8 @@
 title: Stackable API Reference
 
 language_tabs:
-  - ruby
-  - python
+  - nodejs
+  - php
   - shell
 
 toc_footers:
@@ -17,56 +17,87 @@ search: true
 
 # Introduction
 
-Welcome to the Stackable API! You can use our API to access Stackable API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Stackable documentation. Stackable allows you to model content for websites & apps easily and have this available through a secure modern API. All data is returned in JSON including errors.
 
-We have language bindings in Javascript and PHP! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Along side detailed instructions on how to use our library we have provided boilerplates in various languages for you to examine and use in your next projects. Check out github Here.
 
-# Authentication
+  
+# Authentication  
 
-> To authorize, use this code:
+We use a token based system to manage authentication. You will have access to two keys.
 
-```ruby
-require 'kittn'
+- **Public Keys** (ideal for reading data and sites that cannot use server side scripting)
+- **Private Keys** (these provide a higher level of API access with advanced posting)
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+See the image below showing the key locations.
+
+# Obtaining a key from a Stack
+
+Imagine a stack as your app or website. When you login you can create a Stack.   
+  
+Each Stack will hold **containers** and will also have its own Public/Private Key. You can click the cog icon on the stack and you can then see your Keys.  
+  
+If you like you can regenerate a key and also restrict what urls can access the data.
+
+```nodejs
+here is an example of using the private and public keys with a nodejs app.
 ```
 
-```python
-import kittn
+Watch a video here.
 
-api = kittn.authorize('meowmeowmeow')
+# Stacks
+
+As we discussed earlier Stacks are simliar to your whole app. For instance if you create a stack called TODO APP inside it you can create containers maybe to hold TODO items, manage categories.
+
+Below we will show you how to grab the content in every container that exists in your stack
+
+> List All containers
+
+```nodejs
+code here to list all containers
+```
+
+```php
+PHP list all containers
 ```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+List all containers
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `public key` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+# Containers
 
-`Authorization: meowmeowmeow`
+Containers are the heart of your data. Once hyou have clicked on a new setack you can then click the container button as show here.
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+You can now create a new container.
 
-# Kittens
+- Drag and Drop field elements on the page
+- Create validations on the fields
+- Preview how the fields look.
 
-## Get All Kittens
+### list containers items
 
-```ruby
+This code shows you how to read from a specific container
+
+```nodejs
+read container
+```
+
+
+
+## Get All containers
+
+```nodejs
 require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
 api.kittens.get
 ```
 
-```python
+```php
 import kittn
 
 api = kittn.authorize('meowmeowmeow')
@@ -101,9 +132,7 @@ curl "http://example.com/api/kittens"
 
 This endpoint retrieves all kittens.
 
-### HTTP Request
 
-`GET http://example.com/api/kittens`
 
 ### Query Parameters
 
@@ -116,7 +145,7 @@ available | true | If set to false, the result will include kittens that have al
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Get a Specific Kitten
+## Get a Id
 
 ```ruby
 require 'kittn'
