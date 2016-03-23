@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;ruby&quot;,&quot;python&quot;,&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;nodejs&quot;,&quot;php&quot;,&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -104,8 +104,8 @@
         <span>stackable</span>
       </div>
         <div class="lang-selector">
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="nodejs">nodejs</a>
+              <a href="#" data-language-name="php">php</a>
               <a href="#" data-language-name="shell">shell</a>
         </div>
         <div class="search">
@@ -123,54 +123,81 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Stackable API! You can use our API to access Stackable API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Stackable documentation. Stackable allows you to model content for websites &amp; apps easily and have this available through a secure modern API. All data is returned in JSON including errors.</p>
 
-<p>We have language bindings in Javascript and PHP! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Along side detailed instructions on how to use our library we have provided boilerplates in various languages for you to examine and use in your next projects. Check out github Here.</p>
 
 <h1 id="authentication">Authentication</h1>
 
+<p>We use a token based system to manage authentication. You will have access to two keys.</p>
+
+<ul>
+<li><strong>Public Keys</strong> (ideal for reading data and sites that cannot use server side scripting)</li>
+<li><strong>Private Keys</strong> (these provide a higher level of API access with advanced posting)</li>
+</ul>
+
+<p>See the image below showing the key locations.</p>
+
+<h1 id="obtaining-a-key-from-a-stack">Obtaining a key from a Stack</h1>
+
+<p>Imagine a stack as your app or website. When you login you can create a Stack.   </p>
+
+<p>Each Stack will hold <strong>containers</strong> and will also have its own Public/Private Key. You can click the cog icon on the stack and you can then see your Keys.  </p>
+
+<p>If you like you can regenerate a key and also restrict what urls can access the data.</p>
+<pre class="highlight plaintext"><code>here is an example of using the private and public keys with a nodejs app.
+</code></pre>
+
+<p>Watch a video here.</p>
+
+<h1 id="stacks">Stacks</h1>
+
+<p>As we discussed earlier Stacks are simliar to your whole app. For instance if you create a stack called TODO APP inside it you can create containers maybe to hold TODO items, manage categories.</p>
+
+<p>Below we will show you how to grab the content in every container that exists in your stack</p>
+
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>List All containers</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<pre class="highlight plaintext"><code>code here to list all containers
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<pre class="highlight php"><code>PHP list all containers
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre class="highlight shell"><code>List all containers
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code class="prettyprint">public key</code> with your API key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<h1 id="containers">Containers</h1>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Containers are the heart of your data. Once hyou have clicked on a new setack you can then click the container button as show here.</p>
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p>You can now create a new container.</p>
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+<ul>
+<li>Drag and Drop field elements on the page</li>
+<li>Create validations on the fields</li>
+<li>Preview how the fields look.</li>
+</ul>
 
-<h1 id="kittens">Kittens</h1>
+<h3 id="list-containers-items">list containers items</h3>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+<p>This code shows you how to read from a specific container</p>
+<pre class="highlight plaintext"><code>read container
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<h2 id="get-all-containers">Get All containers</h2>
+<pre class="highlight plaintext"><code>require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.get
+</code></pre>
+<pre class="highlight php"><code>import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.get()
 </code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
@@ -199,10 +226,6 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <p>This endpoint retrieves all kittens.</p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
@@ -228,7 +251,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
+<h2 id="get-a-id">Get a Id</h2>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
@@ -338,8 +361,8 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="nodejs">nodejs</a>
+                <a href="#" data-language-name="php">php</a>
                 <a href="#" data-language-name="shell">shell</a>
           </div>
       </div>
