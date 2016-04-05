@@ -2,8 +2,8 @@
 title: Stackable API Reference
 
 language_tabs:
-  - ruby
-  - python
+  - nodejs
+  - php
   - shell
 
 toc_footers:
@@ -17,149 +17,113 @@ search: true
 
 # Introduction
 
-Welcome to the Stackable API! You can use our API to access Stackable API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Stackable documentation. Stackable allows you to model content for websites & apps easily and have this available through a secure modern API. All data is returned in JSON including errors.
 
-We have language bindings in Javascript and PHP! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Along side detailed instructions on how to use our library we have provided boilerplates in various languages for you to examine and use in your next projects. Check out github Here.
+
+
+# Learn the simple stackable concepts
+
+**What is a Stack?**
+
+Imagine a stack as holding all the data for  your website, App or Service it can hold many different types of data which you will model later as described below.
+
+For instance if you create a stack called TODO APP inside it you can create containers maybe to hold TODO items, manage categories.
+
+**What is a Container**
+
+So the Stack holds your data, what you need to do is stack this data together in the real world we may stack together containers which hold items. Same principle in Stackable.
+
+So a container is the type of data you wish to store, it may be products, blog posts, todo items, Users essentially you can create a container and using our drag and drop menu. These then belong to your Stack.
+
+**How do i add Content?**
+
+Once you have created your container you will see a preview of how the form may look. When you are hapy you can save this and then click manage items on the container menu. Here you will see an elegant dashboard with a familar way to enter data. You can share this with others eg content editors.
+
+
+**So to summarise here is how you can imagine your who project.**
+
+Stack: Your App or Website
+
+Container: The Products or Blog posts you want to store
+
+Item: A single item (post, product) that now lives in your container.
+
+# API ENDPOINTS
+
+API Endpoints
+Connect to stackable for restful endpoints.
+
+
+GET /v1/:container
+
+GET /v1/:item
+
+GET /v1/container/item
+
+__ PARMINDER PUT ALL ENDPOINT REQUESTS HERE --
 
 # Authentication
 
-> To authorize, use this code:
+We use a token based system to manage authentication. You will have access to two keys.
 
-```ruby
-require 'kittn'
+- **Public Keys** (ideal for reading data and sites that cannot use server side scripting)
+- **Private Keys** (these provide a higher level of API access with advanced posting)
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+See the image below showing the key locations. --
+
+# Obtaining a key from a Stack
+
+Each Stack will hold **containers** and will also have its own Public/Private Key. You can click the cog icon on the stack and you can then see your Keys.
+
+If you like you can regenerate a key and also restrict what urls can access the data.
+
+-- screen cap dashboard --
+
+# API EXAMPLES
+
+-- parminder do example of request and response here!!
+
+# GET content
+
+GET /v1/containers
+
+Returns an array of all of your containers objects.
+
+Optional Query Parameters
+
+limit=number
+skip=number
+
+# PUT content
+
+PUT /v1/containers
+
+
+# Let make something
+
+Stackable has client libraries to help you easily manage content on your website or app. Check out these examples below.
+
+A basic example
+
+Browser
+
+Add the stackable.min.js file from the Official Stackable JavaScript Client on GitHub to your app.
+
+**Below is a real world example Using JAVASCRIPT**
+
+---- PARMINDER ---
+
+```nodejs
+here is an example of using the private and public keys with a nodejs app.
 ```
 
-```python
-import kittn
+Install the Official Stackable JavaScript Client on NPM.
 
-api = kittn.authorize('meowmeowmeow')
+-- PARMINDER ---
+
+```php
+here is an example of using the private and public keys with a nodejs app.
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
+-- PARMINDER --
