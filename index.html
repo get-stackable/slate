@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;nodejs&quot;,&quot;php&quot;,&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;javascript&quot;,&quot;php&quot;,&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -104,7 +104,7 @@
         <span>stackable</span>
       </div>
         <div class="lang-selector">
-              <a href="#" data-language-name="nodejs">nodejs</a>
+              <a href="#" data-language-name="javascript">javascript</a>
               <a href="#" data-language-name="php">php</a>
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -127,7 +127,7 @@
 
 <p>Along side detailed instructions on how to use our library we have provided boilerplates in various languages for you to examine and use in your next projects. Check out github Here.</p>
 
-<h1 id="learn-the-simple-stackable-concepts">Learn the simple stackable concepts</h1>
+<h1 id="learn-the-concepts">Learn the concepts</h1>
 
 <p><strong>What is a Stack?</strong></p>
 
@@ -153,18 +153,24 @@
 
 <p>Item: A single item (post, product) that now lives in your container.</p>
 
-<h1 id="api-endpoints">API ENDPOINTS</h1>
+<h1 id="api-endpoints">API Endpoints</h1>
 
 <p>API Endpoints
 Connect to stackable for restful endpoints.</p>
 
-<p>GET /v1/:container</p>
+<p>GET /v1/containers</p>
 
-<p>GET /v1/:item</p>
+<p>GET /v1/containers/:CONTAINER-ID</p>
 
-<p>GET /v1/container/item</p>
+<p>GET /v1/containers/:CONTAINER-ID/items</p>
 
-<p>__ PARMINDER PUT ALL ENDPOINT REQUESTS HERE &ndash;</p>
+<p>GET /v1/items</p>
+
+<p>GET /v1/items/:ITEM-ID</p>
+
+<p>POST /v1/items?containerId=CONTAINER-ID</p>
+
+<p>PUT /v1/items/:ITEM-ID</p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -177,7 +183,7 @@ Connect to stackable for restful endpoints.</p>
 
 <p>See the image below showing the key locations. &ndash;</p>
 
-<h1 id="obtaining-a-key-from-a-stack">Obtaining a key from a Stack</h1>
+<h1 id="obtaining-a-key">Obtaining a key</h1>
 
 <p>Each Stack will hold <strong>containers</strong> and will also have its own Public/Private Key. You can click the cog icon on the stack and you can then see your Keys.</p>
 
@@ -185,24 +191,101 @@ Connect to stackable for restful endpoints.</p>
 
 <p>&ndash; screen cap dashboard &ndash;</p>
 
-<h1 id="api-examples">API EXAMPLES</h1>
-
-<p>&ndash; parminder do example of request and response here!!</p>
-
-<h1 id="get-content">GET content</h1>
+<h1 id="get-containers">GET containers</h1>
+<pre class="highlight javascript"><code><span class="err">#</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">some</span> <span class="nx">javascript</span> <span class="nx">code</span><span class="o">!</span>
+</code></pre>
+<pre class="highlight php"><code># This is some php code!
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+</code></pre>
 
 <p>GET /v1/containers</p>
 
-<p>Returns an array of all of your containers objects.</p>
+<p>Returns an array of all of your containers in stack.</p>
 
-<p>Optional Query Parameters</p>
+<h1 id="get-single-container">GET single container</h1>
+<pre class="highlight javascript"><code><span class="err">#</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">some</span> <span class="nx">javascript</span> <span class="nx">code</span><span class="o">!</span>
+</code></pre>
+<pre class="highlight php"><code># This is some php code!
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+</code></pre>
 
-<p>limit=number
-skip=number</p>
+<p>GET /v1/containers/:CONTAINER-ID</p>
 
-<h1 id="put-content">PUT content</h1>
+<p>Returns an object of requested container in stack.</p>
 
-<p>PUT /v1/containers</p>
+<h1 id="get-container-items">GET container items</h1>
+<pre class="highlight javascript"><code><span class="err">#</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">some</span> <span class="nx">javascript</span> <span class="nx">code</span><span class="o">!</span>
+</code></pre>
+<pre class="highlight php"><code># This is some php code!
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+</code></pre>
+
+<p>GET /v1/containers/:CONTAINER-ID/items</p>
+
+<p>Returns an array of items from requested container in stack.</p>
+
+<h3 id="optional-query-parameters">Optional Query Parameters</h3>
+
+<p>$limit=number</p>
+
+<p>$skip=number</p>
+
+<h1 id="get-stack-items">GET stack items</h1>
+<pre class="highlight javascript"><code><span class="err">#</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">some</span> <span class="nx">javascript</span> <span class="nx">code</span><span class="o">!</span>
+</code></pre>
+<pre class="highlight php"><code># This is some php code!
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+</code></pre>
+
+<p>GET /v1/items</p>
+
+<p>Returns an array of all items in stack (from all containers).</p>
+
+<h3 id="optional-query-parameters">Optional Query Parameters</h3>
+
+<p>$limit=number</p>
+
+<p>$skip=number</p>
+
+<h1 id="get-single-items">GET single items</h1>
+<pre class="highlight javascript"><code><span class="err">#</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">some</span> <span class="nx">javascript</span> <span class="nx">code</span><span class="o">!</span>
+</code></pre>
+<pre class="highlight php"><code># This is some php code!
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+</code></pre>
+
+<p>GET /v1/items/:ITEM-ID</p>
+
+<p>Returns an object of single requested item.</p>
+
+<h1 id="create-item">CREATE item</h1>
+<pre class="highlight javascript"><code><span class="err">#</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">some</span> <span class="nx">javascript</span> <span class="nx">code</span><span class="o">!</span>
+</code></pre>
+<pre class="highlight php"><code># This is some php code!
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+</code></pre>
+
+<p>POST /v1/items?containerId=CONTAINER-ID</p>
+
+<p>Creates an item in requested container.</p>
+
+<h1 id="update-item">UPDATE item</h1>
+<pre class="highlight javascript"><code><span class="err">#</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">some</span> <span class="nx">javascript</span> <span class="nx">code</span><span class="o">!</span>
+</code></pre>
+<pre class="highlight php"><code># This is some php code!
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+</code></pre>
+
+<p>PUT /v1/items/:ITEM-ID</p>
+
+<p>Updates an requested item.</p>
 
 <h1 id="let-make-something">Let make something</h1>
 
@@ -227,6 +310,10 @@ skip=number</p>
 </code></pre>
 
 <p>&ndash; PARMINDER &ndash;</p>
+
+<h1 id="api-examples">API Examples</h1>
+
+<p>&ndash; parminder do example of request and response here!!</p>
 
           <h1 id="errors">Errors</h1>
 
@@ -289,7 +376,7 @@ skip=number</p>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="nodejs">nodejs</a>
+                <a href="#" data-language-name="javascript">javascript</a>
                 <a href="#" data-language-name="php">php</a>
                 <a href="#" data-language-name="shell">shell</a>
           </div>
