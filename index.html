@@ -172,7 +172,7 @@ Connect to stackable for restful endpoints.</p>
 
 <p>PUT /v1/items/:ITEM-ID</p>
 
-<h1 id="authentication">Authentication</h1>
+          <h1 id="authentication">Authentication</h1>
 
 <p>We use a token based system to manage authentication. You will have access to two keys.</p>
 
@@ -191,12 +191,15 @@ Connect to stackable for restful endpoints.</p>
 
 <p>&ndash; screen cap dashboard &ndash;</p>
 
-<h1 id="initialise-libraries">Initialise libraries</h1>
+          <h1 id="initialise-libraries">Initialise libraries</h1>
 
 <p>Before using any of stackable&rsquo;s library, you need to initialise it</p>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">stackable</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stackable</span><span class="p">(</span><span class="s1">'YOUR-STACK-KEY-HERE'</span><span class="p">);</span>
 </code></pre>
 <pre class="highlight php"><code>$stackable = new Stackable('YOUR-STACK-KEY-HERE');
+</code></pre>
+<pre class="highlight shell"><code>//pass GET variable <span class="sb">`</span>token<span class="sb">`</span> as Stack key, example:
+curl https://api.stackable.space/v1/containers?token<span class="o">=</span>YOUR-STACK-KEY-HERE
 </code></pre>
 
 <h1 id="get-all-containers">GET all containers</h1>
@@ -207,7 +210,7 @@ Connect to stackable for restful endpoints.</p>
 <pre class="highlight php"><code>$result = $stackable-&gt;getContainers();
 print_r($result);
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+<pre class="highlight shell"><code>curl https://api.stackable.space/v1/containers?token<span class="o">=</span>YOUR-STACK-KEY-HERE
 </code></pre>
 
 <p>GET /v1/containers</p>
@@ -222,7 +225,7 @@ print_r($result);
 <pre class="highlight php"><code>$result = $stackable-&gt;getContainer('CONTAINER-ID');
 print_r($result);
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+<pre class="highlight shell"><code>curl https://api.stackable.space/v1/containers/:CONTAINER-ID?token<span class="o">=</span>YOUR-STACK-KEY-HERE
 </code></pre>
 
 <p>GET /v1/containers/:CONTAINER-ID</p>
@@ -237,7 +240,7 @@ print_r($result);
 <pre class="highlight php"><code>$result = $stackable-&gt;getContainerItems('CONTAINER-ID');
 print_r($result);
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+<pre class="highlight shell"><code>curl https://api.stackable.space/v1/containers/:CONTAINER-ID/items?token<span class="o">=</span>YOUR-STACK-KEY-HERE
 </code></pre>
 
 <p>GET /v1/containers/:CONTAINER-ID/items</p>
@@ -258,7 +261,7 @@ print_r($result);
 <pre class="highlight php"><code>$result = $stackable-&gt;getAllItems();
 print_r($result);
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+<pre class="highlight shell"><code>curl https://api.stackable.space/v1/items?token<span class="o">=</span>YOUR-STACK-KEY-HERE
 </code></pre>
 
 <p>GET /v1/items</p>
@@ -279,7 +282,7 @@ print_r($result);
 <pre class="highlight php"><code>$result = $stackable-&gt;getItem('ITEM-ID');
 print_r($result);
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+<pre class="highlight shell"><code>curl https://api.stackable.space/v1/items/ITEM-ID?token<span class="o">=</span>YOUR-STACK-KEY-HERE
 </code></pre>
 
 <p>GET /v1/items/:ITEM-ID</p>
@@ -304,7 +307,8 @@ print_r($result);
 $result = $stackable-&gt;createItem('CONTAINER-ID', dataToPost);
 print_r($result);
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+<pre class="highlight shell"><code>curl -X POST https://api.stackable.space/v1/items?token<span class="o">=</span>YOUR-STACK-KEY-HERE&amp;containerId<span class="o">=</span>CONTAINER-ID <span class="se">\</span>
+    -d <span class="s2">"name=John Doe&amp;age=29"</span>
 </code></pre>
 
 <p>POST /v1/items?containerId=CONTAINER-ID</p>
@@ -329,14 +333,15 @@ print_r($result);
 $result = $stackable-&gt;updateItem('ITEM-ID', dataToPost);
 print_r($result);
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># This is some shell code!</span>
+<pre class="highlight shell"><code>curl -X PUT https://api.stackable.space/v1/items/ITEM-ID?token<span class="o">=</span>YOUR-STACK-KEY-HERE <span class="se">\</span>
+    -d <span class="s2">"name=John Doe&amp;age=29"</span>
 </code></pre>
 
 <p>PUT /v1/items/:ITEM-ID</p>
 
 <p>Updates an requested item.</p>
 
-<h1 id="let-make-something">Let make something</h1>
+          <h1 id="let-make-something">Let make something</h1>
 
 <p>Stackable has client libraries to help you easily manage content on your website or app. Check out these examples below.</p>
 
@@ -359,10 +364,6 @@ print_r($result);
 </code></pre>
 
 <p>&ndash; PARMINDER &ndash;</p>
-
-<h1 id="api-examples">API Examples</h1>
-
-<p>&ndash; parminder do example of request and response here!!</p>
 
           <h1 id="errors">Errors</h1>
 
@@ -421,6 +422,10 @@ print_r($result);
 <td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
 </tr>
 </tbody></table>
+
+          <h1 id="api-examples">API Examples</h1>
+
+<p>&ndash; parminder do example of request and response here!!</p>
 
       </div>
       <div class="dark-box">
