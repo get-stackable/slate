@@ -10,6 +10,12 @@ var stackable = new Stackable('YOUR-STACK-KEY-HERE');
 $stackable = new Stackable('YOUR-STACK-KEY-HERE');
 ```
 
+
+```shell
+//pass GET variable `token` as Stack key, example:
+curl https://api.stackable.space/v1/containers?token=YOUR-STACK-KEY-HERE
+```
+
 # GET all containers
 
 ```javascript
@@ -24,7 +30,7 @@ print_r($result);
 ```
 
 ```shell
-# This is some shell code!
+curl https://api.stackable.space/v1/containers?token=YOUR-STACK-KEY-HERE
 ```
 
 GET /v1/containers
@@ -45,7 +51,7 @@ print_r($result);
 ```
 
 ```shell
-# This is some shell code!
+curl https://api.stackable.space/v1/containers/:CONTAINER-ID?token=YOUR-STACK-KEY-HERE
 ```
 
 GET /v1/containers/:CONTAINER-ID
@@ -66,7 +72,7 @@ print_r($result);
 ```
 
 ```shell
-# This is some shell code!
+curl https://api.stackable.space/v1/containers/:CONTAINER-ID/items?token=YOUR-STACK-KEY-HERE
 ```
 
 GET /v1/containers/:CONTAINER-ID/items
@@ -93,7 +99,7 @@ print_r($result);
 ```
 
 ```shell
-# This is some shell code!
+curl https://api.stackable.space/v1/items?token=YOUR-STACK-KEY-HERE
 ```
 
 GET /v1/items
@@ -120,7 +126,7 @@ print_r($result);
 ```
 
 ```shell
-# This is some shell code!
+curl https://api.stackable.space/v1/items/ITEM-ID?token=YOUR-STACK-KEY-HERE
 ```
 
 GET /v1/items/:ITEM-ID
@@ -151,7 +157,8 @@ print_r($result);
 ```
 
 ```shell
-# This is some shell code!
+curl -X POST https://api.stackable.space/v1/items?token=YOUR-STACK-KEY-HERE&containerId=CONTAINER-ID \
+    -d "name=John Doe&age=29"
 ```
 
 POST /v1/items?containerId=CONTAINER-ID
@@ -182,7 +189,8 @@ print_r($result);
 ```
 
 ```shell
-# This is some shell code!
+curl -X PUT https://api.stackable.space/v1/items/ITEM-ID?token=YOUR-STACK-KEY-HERE \
+    -d "name=John Doe&age=29"
 ```
 
 PUT /v1/items/:ITEM-ID
