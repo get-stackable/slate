@@ -2,7 +2,7 @@
 title: Stackable API Reference
 
 language_tabs:
-  - nodejs
+  - javascript
   - php
   - shell
 
@@ -22,7 +22,7 @@ Welcome to the Stackable documentation. Stackable allows you to model content fo
 Along side detailed instructions on how to use our library we have provided boilerplates in various languages for you to examine and use in your next projects. Check out github Here.
 
 
-# Learn the simple stackable concepts
+# Learn the concepts
 
 **What is a Stack?**
 
@@ -49,19 +49,26 @@ Container: The Products or Blog posts you want to store
 
 Item: A single item (post, product) that now lives in your container.
 
-# API ENDPOINTS
+# API Endpoints
 
 API Endpoints
 Connect to stackable for restful endpoints.
 
 
-GET /v1/:container
+GET /v1/containers
 
-GET /v1/:item
+GET /v1/containers/:CONTAINER-ID
 
-GET /v1/container/item
+GET /v1/containers/:CONTAINER-ID/items
 
-__ PARMINDER PUT ALL ENDPOINT REQUESTS HERE --
+GET /v1/items
+
+GET /v1/items/:ITEM-ID
+
+POST /v1/items?containerId=CONTAINER-ID
+
+PUT /v1/items/:ITEM-ID
+
 
 # Authentication
 
@@ -72,7 +79,7 @@ We use a token based system to manage authentication. You will have access to tw
 
 See the image below showing the key locations. --
 
-# Obtaining a key from a Stack
+# Obtaining a key
 
 Each Stack will hold **containers** and will also have its own Public/Private Key. You can click the cog icon on the stack and you can then see your Keys.
 
@@ -80,24 +87,196 @@ If you like you can regenerate a key and also restrict what urls can access the 
 
 -- screen cap dashboard --
 
-# API EXAMPLES
+# Initialise libraries
 
--- parminder do example of request and response here!!
+Before using any of stackable's library, you need to initialise it
 
-# GET content
+```javascript
+var stackable = new Stackable('YOUR-STACK-KEY-HERE');
+```
+
+```php
+$stackable = new Stackable('YOUR-STACK-KEY-HERE');
+```
+
+# GET all containers
+
+```javascript
+stackable.getContainers(function (error, result) {
+    console.log(error, result);
+});
+```
+
+```php
+$result = $stackable->getContainers();
+print_r($result);
+```
+
+```shell
+# This is some shell code!
+```
 
 GET /v1/containers
 
-Returns an array of all of your containers objects.
+Returns an array of all of your containers in stack.
 
-Optional Query Parameters
+# GET single container
 
-limit=number
-skip=number
+```javascript
+stackable.getContainer('CONTAINER-ID', function (error, result) {
+    console.log(error, result);
+});
+```
 
-# PUT content
+```php
+$result = $stackable->getContainer('CONTAINER-ID');
+print_r($result);
+```
 
-PUT /v1/containers
+```shell
+# This is some shell code!
+```
+
+GET /v1/containers/:CONTAINER-ID
+
+Returns an object of requested container in stack.
+
+# GET container's all items
+
+```javascript
+stackable.getContainerItems('CONTAINER-ID', function (error, result) {
+    console.log(error, result);
+});
+```
+
+```php
+$result = $stackable->getContainerItems('CONTAINER-ID');
+print_r($result);
+```
+
+```shell
+# This is some shell code!
+```
+
+GET /v1/containers/:CONTAINER-ID/items
+
+Returns an array of items from requested container in stack.
+
+### Optional Query Parameters
+
+$limit=number
+
+$skip=number
+
+# GET stack's all items
+
+```javascript
+stackable.getAllItems(function (error, result) {
+    console.log(error, result);
+});
+```
+
+```php
+$result = $stackable->getAllItems();
+print_r($result);
+```
+
+```shell
+# This is some shell code!
+```
+
+GET /v1/items
+
+Returns an array of all items in stack (from all containers).
+
+### Optional Query Parameters
+
+$limit=number
+
+$skip=number
+
+# GET single items
+
+```javascript
+stackable.getItem('ITEM-ID', function (error, result) {
+    console.log(error, result);
+});
+```
+
+```php
+$result = $stackable->getItem('ITEM-ID');
+print_r($result);
+```
+
+```shell
+# This is some shell code!
+```
+
+GET /v1/items/:ITEM-ID
+
+Returns an object of single requested item.
+
+# CREATE item
+
+```javascript
+var dataToPost = {
+    name: 'John Doe',
+    age: 29
+};
+
+stackable.createItem('CONTAINER-ID', dataToPost, function (error, result) {
+    console.log(error, result);
+});
+```
+
+```php
+var dataToPost = [
+    name => 'John Doe',
+    age => 29
+];
+
+$result = $stackable->createItem('CONTAINER-ID', dataToPost);
+print_r($result);
+```
+
+```shell
+# This is some shell code!
+```
+
+POST /v1/items?containerId=CONTAINER-ID
+
+Creates an item in requested container.
+
+# UPDATE item
+
+```javascript
+var dataToUpdate = {
+    name: 'John Doe',
+    age: 29
+};
+
+stackable.updateItem('ITEM-ID', dataToUpdate, function (error, result) {
+    console.log(error, result);
+});
+```
+
+```php
+var dataToPost = [
+    name => 'John Doe',
+    age => 29
+];
+
+$result = $stackable->updateItem('ITEM-ID', dataToPost);
+print_r($result);
+```
+
+```shell
+# This is some shell code!
+```
+
+PUT /v1/items/:ITEM-ID
+
+Updates an requested item.
 
 
 # Let make something
@@ -127,3 +306,7 @@ here is an example of using the private and public keys with a nodejs app.
 ```
 
 -- PARMINDER --
+
+# API Examples
+
+-- parminder do example of request and response here!!
